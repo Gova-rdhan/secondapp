@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto8
+    commands:
+      # Install Maven
+  build:
+    commands:
+      # Build the Spring Boot application
+      mvn install
+      
+  post_build:
+    commands:
+      # Copy the built WAR file to the root directory
+      cp target/HelloWorld.war app.war
+      
+artifacts:
+  files:
+    - app.war
